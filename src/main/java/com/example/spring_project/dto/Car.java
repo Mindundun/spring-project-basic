@@ -1,9 +1,12 @@
 package com.example.spring_project.dto;
 
+import org.springframework.stereotype.Component;
+
 // POJO 
+@Component(value = "car")
 public class Car {
     // field
-    private String name;
+    private String name = "제네시스";
 
     // Constructor method
     public Car() {

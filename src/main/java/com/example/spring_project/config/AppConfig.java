@@ -7,7 +7,7 @@ import com.example.spring_project.dto.Car;
 import com.example.spring_project.dto.Hello;
 
 // Java Config 클래스 구현
-@Configuration
+// @Configuration
 public class AppConfig {
 
     // Car라는 객체가 Bean이 된다. 
