@@ -28,8 +28,9 @@ public class SpringProjectApplication {
 		AnnotationConfigApplicationContext context =
 			new AnnotationConfigApplicationContext(NotificationConfig.class);
 
-		 NotificationService notificationService = context.getBean("notificationService", NotificationService.class);
-		 System.out.println(notificationService.getSender());	// com.example.spring_project.dto.SmsSender@70e8f8e출력
+		NotificationService notificationService = context.getBean("notificationService", NotificationService.class);
+		System.out.println(notificationService.getSender());	// com.example.spring_project.dto.SmsSender@70e8f8e출력
+		notificationService.sendNotification("Mindundun", "you can do it!!!"); // SMS : Mindundun, message : you can do it!!!
 	}
 	// public static void main(String[] args) {
 	// 	ConfigurableApplicationContext context = SpringApplication.run(SpringProjectApplication.class, args);
