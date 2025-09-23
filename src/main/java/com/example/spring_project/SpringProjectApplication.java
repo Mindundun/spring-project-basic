@@ -18,20 +18,30 @@ import com.example.spring_project.service.NotificationService;
 // @Configuration
 @SpringBootApplication
 public class SpringProjectApplication {
-
-	@Bean(name = "vehicle")
-	public Vehicle vehicle() {
-		return new Vehicle("자전거@");
-	}
-	
 	public static void main(String[] args) {
-		AnnotationConfigApplicationContext context =
-			new AnnotationConfigApplicationContext(NotificationConfig.class);
+		// 스프링 컨텍스트를 초기화하고 설정 클래스를 로드한다.
+		ConfigurableApplicationContext context = 
+			SpringApplication.run(SpringProjectApplication.class, args);
 
-		NotificationService notificationService = context.getBean("notificationService", NotificationService.class);
-		System.out.println(notificationService.getSender());	// com.example.spring_project.dto.SmsSender@70e8f8e출력
-		notificationService.sendNotification("Mindundun", "you can do it!!!"); // SMS : Mindundun, message : you can do it!!!
+ 		NotificationService service = context.getBean("notification", NotificationService.class);
+
+		service.sendNotification("Mindun!!", "화이팅해야지!!");
 	}
+
+	/* 의존성 역전 예제 */
+	// @Bean(name = "vehicle")
+	// public Vehicle vehicle() {
+	// 	return new Vehicle("자전거@");
+	// }
+
+	// public static void main(String[] args) {
+	// 	AnnotationConfigApplicationContext context =
+	// 		new AnnotationConfigApplicationContext(NotificationConfig.class);
+
+	// 	NotificationService notificationService = context.getBean("notificationService", NotificationService.class);
+	// 	System.out.println(notificationService.getSender());	// com.example.spring_project.dto.SmsSender@70e8f8e출력
+	// 	notificationService.sendNotification("Mindundun", "you can do it!!!"); // SMS : Mindundun, message : you can do it!!!
+	// }
 	// public static void main(String[] args) {
 	// 	ConfigurableApplicationContext context = SpringApplication.run(SpringProjectApplication.class, args);
 
